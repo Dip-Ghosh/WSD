@@ -1,0 +1,59 @@
+version: "3.6"
+
+networks:
+  dev:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.104.103.0/24
+
+services:
+  php-fpm:
+    image: php-cs/php-fpm:latest
+    build:
+      context: ./builder
+      args:
+        UID: ${UID}
+    volumes:
+      - ./../:/project
+    working_dir: /project
+    tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - ./../.env
+    networks:
+      dev:
+
+  nginx:
+    image: php-cs/nginx:latest
+    build:
+      context: ./
+      dockerfile: ./nginx/Dockerfile
+      args:
+        UID: ${UID}
+    working_dir: /project
+    ports:
+      - "8013:8080"
+    volumes:
+      - ./../:/project
+    tty: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - ./../.env
+    networks:
+      dev:
+
+  mongodb:
+    image: mongo:4.4
+    tty: true
+    env_file:
+      - ./../.env
+#    ports:
+#      - "27917:27017"
+#    volumes:
+#      - ./../data/mongodb:/data/db
+    networks:
+      dev:

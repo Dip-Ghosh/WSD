@@ -1,0 +1,88 @@
+<?php
+/* @var $this \Laminas\View\Renderer\PhpRenderer */
+
+use Laminas\Mvc\Application;
+$this->layout('solvians/empty-layout');
+
+$data            = [];
+$data['message'] = $this->message;
+$reasonMessage   = null;
+if (!empty($this->reason)) {
+    switch ($this->reason) {
+        case Application::ERROR_CONTROLLER_CANNOT_DISPATCH:
+            $reasonMessage = 'The requested controller was unable to dispatch the request.';
+            break;
+        case Application::ERROR_MIDDLEWARE_CANNOT_DISPATCH:
+            $reasonMessage = 'The requested middleware was unable to dispatch the request.';
+            break;
+        case Application::ERROR_CONTROLLER_NOT_FOUND:
+            $reasonMessage = 'The requested controller could not be mapped to an existing controller class.';
+            break;
+        case Application::ERROR_CONTROLLER_INVALID:
+            $reasonMessage = 'The requested controller was not dispatchable.';
+            break;
+        case Application::ERROR_ROUTER_NO_MATCH:
+            $reasonMessage = 'The requested URL could not be matched by routing.';
+            break;
+        default:
+            $reasonMessage = 'We cannot determine at this time why a 404 was generated.';
+            break;
+    }
+}
+$data['reason']           = $reasonMessage;
+$data['controller']       = $this->controller ?? null;
+$data['controller_class'] = $this->controller_class ?? null;
+
+if (!empty($this->display_exceptions) || $this->viewVarIsRequestFromSolvians) {
+    if (isset($this->exception) && $this->exception instanceof \Throwable) {
+        $data['additionalInformation'] = [
+            'exception' => [
+                'class'   => get_class($this->exception),
+                'file'    => $this->exception->getFile() . ':' . $this->exception->getLine(),
+                'message' => $this->exception->getMessage(),
+                'trace'   => \explode("\n", \str_replace("\r\n", "\n", $this->exception->getTraceAsString())),
+            ]
+        ];
+        if ($ex = $this->exception->getPrevious()) {
+            $data['additionalInformation']['exception']['previousExceptions'] = [];
+            $exCount                                                          = 0;
+            while ($ex) {
+                $data['additionalInformation']['exception']['previousExceptions'][] = [
+                    'class'   => get_class($ex),
+                    'file'    => $ex->getFile() . ':' . $ex->getLine(),
+                    'message' => $ex->getMessage(),
+                    'trace'   => \explode("\n", \str_replace("\r\n", "\n", $ex->getTraceAsString())),
+                ];
+                $ex                                                                 = $ex->getPrevious();
+                if (++$exCount >= 50) {
+                    break;
+                }
+            }
+        }
+    }
+}
+
+echo $this->viewVarLastGoodIndexHtml;
+?>
+<?php if ($this->viewVarIsRequestFromSolvians) : ?>
+
+    <!--
+<div class='application-error-block'>
+<pre>
+Error info (From Solvians)
+
+Data (Json):
+<?php echo str_replace('-->', '\-\-\>', json_encode($data, JSON_PRETTY_PRINT)); ?>
+
+
+PRINTED in: <?= __FILE__ ?>
+
+Trace til this line:
+<?= (new \Exception)->getTraceAsString(); ?>
+
+
+</pre>
+</div>
+-->
+
+<?php endif; ?>

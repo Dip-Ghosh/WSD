@@ -1,0 +1,2 @@
+include               conf.d/fastcgi_params;
+fastcgi_pass          php-fpm:9000;

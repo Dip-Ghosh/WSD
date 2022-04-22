@@ -1,0 +1,55 @@
+{
+  "data": [
+    {
+      "instruments": [
+        {
+          "isin": "CH123456789",
+          "properties": {
+            "quantity": 2,
+            "structure": 112
+          }
+        }, {
+          "isin": "CH1334567111",
+          "properties": {
+            "quantity": 3,
+            "structure": 112
+          }
+        },
+        {
+          "isin": "CH123452189",
+          "properties": {
+            "quantity": 2,
+            "structure": 111
+          }
+        },
+        {
+          "isin": "CH5334567189",
+          "properties": {
+            "quantity": 2,
+            "structure": 112
+          }
+        },
+        {
+          "isin": "CH1334567189",
+          "properties": {
+            "quantity": 5,
+            "structure": 112
+          }
+        },{
+          "isin": "CH5334567189",
+          "properties": {
+            "quantity": 5,
+            "structure": 112
+          }
+        },
+        {
+          "isin": "CH1234567111",
+          "properties": {
+            "quantity": 2,
+            "structure": 112
+          }
+        }
+      ]
+    }
+  ]
+}

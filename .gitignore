@@ -1,0 +1,25 @@
+# IDE files
+/.idea/
+/.project
+/nbproject/
+/.vscode/
+
+/.phpunit*
+
+# Composer files
+/vendor/
+
+# Data
+/data/cache
+/data/log
+
+# Test coverage
+tests/coverage*/*
+tests/reports/
+.DS_Store
+/.composer
+
+/.env
+
+!**.gitkeep
+

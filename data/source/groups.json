@@ -1,0 +1,109 @@
+{
+  "label": "Produkttyp",
+  "list": {
+    "svsp12yieldenhancement": {
+      "label": "Renditeoptimierung",
+      "list": {
+        "Svsp1200DiscountCertificates": {
+          "label": "Discount-Zertifikat",
+          "value": "Discount-Zertifikat",
+          "list": []
+        },
+        "Svsp1220ReverseConvertibles": {
+          "label": "Reverse Convertible",
+          "value": "Reverse-Convertible",
+          "list": []
+        },
+        "Svsp1230Brc": {
+          "label": "Barrier Reverse Convertible",
+          "value": "Barrier-Reverse-Convertible",
+          "list": {
+            "Svsp1230BarrierReverseConvertiblesStd": {
+              "label": "Standard BRC",
+              "value": "Barrier-Reverse-Convertible-Standard",
+              "list": {
+                "Svsp1230BarrierReverseConvertiblesStdSub": {
+                  "label": "Standard BRC Sub",
+                  "list": {
+                    "Svsp1230BarrierReverseConvertiblesStdSubSub": {
+                      "label": "Standard BRC Sub Sub"
+                    }
+                  }
+                }
+              }
+            },
+            "Svsp1230BarrierReverseConvertiblesEr": {
+              "label": "Autocallable BRC",
+              "value": "Barrier-Reverse-Convertible-Early-Redemption",
+              "list": []
+            },
+            "Svsp1230BarrierReverseConvertiblesCar": {
+              "label": "BRC mit bedingtem Coupon",
+              "value": "Barrier-Reverse-Convertible-Coupon-at-Risk",
+              "list": []
+            },
+            "Svsp1230BarrierReverseConvertiblesPr": {
+              "label": "BRC mit Partizipation",
+              "value": "Barrier-Reverse-Convertible-Participation",
+              "list": []
+            },
+            "Svsp1230BarrierReverseConvertiblesTr": {
+              "label": "Trigger BRC",
+              "value": "Barrier-Reverse-Convertible-Trigger",
+              "list": []
+            },
+            "Svsp1230BarrierReverseConvertiblesCal": {
+              "label": "Callable BRC",
+              "value": "Barrier-Reverse-Convertible-Callable",
+              "list": []
+            }
+          }
+        }
+      },
+      "newColumn": true
+    },
+    "svsp13participation": {
+      "label": "Partizipation",
+      "list": {
+        "Svsp1300TrackerCertificates": {
+          "label": "Tracker-Zertifikat",
+          "value": "Tracker-Zertifikat",
+          "list": []
+        },
+        "Svsp1310OutperformanceCertificates": {
+          "label": "Outperformance-Zertifikat",
+          "value": "Outperformance-Zertifikat",
+          "list": []
+        },
+        "Svsp1320BonusCertificates": {
+          "label": "Bonus-Zertifikat",
+          "value": "Bonus-Zertifikat",
+          "list": []
+        },
+        "Svsp1330BonusOutperformanceCertificates": {
+          "label": "Bonus-Outperformance-Zertifikat",
+          "value": "Bonus-Outperformance-Zertifikat",
+          "list": []
+        },
+        "Svsp1340TwinWinCertificates": {
+          "label": "Twin-Win-Zertifikat",
+          "value": "Twin-Win-Zertifikat",
+          "list": []
+        }
+      },
+      "newColumn": true
+    },
+    "svsp11capitalprotection": {
+      "label": "Kapitalschutz",
+      "list": {
+        "Svsp1100CapitalProtectionCertificates": {
+          "label": "Kapitalschutz-Zertifikat",
+          "value": "Kapitalschutz-Zertifikat-Partizipation",
+          "list": []
+        }
+      },
+      "newColumn": true
+    }
+  },
+  "active": []
+}

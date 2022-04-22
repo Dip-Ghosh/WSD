@@ -1,0 +1,58 @@
+{
+    "instruments": [
+      {
+        "CH123456789": {
+          "isin": "CH123456789",
+          "buyPrice": "900",
+          "currentSellPrice":  200,
+          "currentBuyPrice":  1000,
+          "currency": "EUR"
+        }
+      },
+      {
+        "CH123452189": {
+          "isin": "CH123456789",
+          "buyPrice": "100",
+          "currentSellPrice":  200,
+          "currentBuyPrice":  1000,
+          "currency": "EUR"
+        }
+      },
+      {
+        "CH1234567111": {
+          "isin": "CH1234567111",
+          "buyPrice": "1000",
+          "currentSellPrice":  200,
+          "currentBuyPrice":  1000,
+          "currency": "EUR"
+        }
+      },
+      {
+        "CH1334567111": {
+          "isin": "CH1334567111",
+          "buyPrice": "100",
+          "currentSellPrice":  200,
+          "currentBuyPrice":  1000,
+          "currency": "EUR"
+        }
+      },
+      {
+        "CH1334567189": {
+          "isin": "CH1334567189",
+          "buyPrice": "500",
+          "currentSellPrice":  1500,
+          "currentBuyPrice":  500,
+          "currency": "EUR"
+        }
+      },
+      {
+        "CH5334567189": {
+          "isin": "CH5334567189",
+          "buyPrice": "1000",
+          "currentSellPrice":  1000.1,
+          "currentBuyPrice":  900,
+          "currency": "EUR"
+        }
+      }
+    ]
+}
