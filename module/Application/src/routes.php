@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 use Application\Controller\IndexController;
 use Application\Controller\ListController;
+use Application\Controller\PortfolioController;
 use Application\Module;
 use Laminas\Router\Http\Literal;
 
@@ -53,6 +54,17 @@ return [
                 /** @link \Application\Controller\ListController::nullRatioAction() */
                 'controller' => ListController::class,
                 'action' => 'null-ratio',
+            ],
+        ],
+    ],
+    'portfolio' => [
+        'type' => \Laminas\Router\Http\Segment::class,
+        'priority' => Module::ROUTE_PRIORITY_MED,
+        'options' => [
+            'route' => '/portfolio[/showProfits/:showProfits][structureId/:structureId]',
+            'defaults' => [
+                'controller' => PortfolioController::class,
+                'action' => 'getPortfolios',
             ],
         ],
     ],
