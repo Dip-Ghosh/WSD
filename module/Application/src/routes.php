@@ -57,12 +57,13 @@ return [
             ],
         ],
     ],
-    'portfolio' => [
+    'portfolio-list' => [
         'type' => \Laminas\Router\Http\Segment::class,
         'priority' => Module::ROUTE_PRIORITY_MED,
         'options' => [
             'route' => '/portfolio[/showProfits/:showProfits][structureId/:structureId]',
             'defaults' => [
+                /** @link \Application\Controller\PortfolioController::getPortfolios() */
                 'controller' => PortfolioController::class,
                 'action' => 'getPortfolios',
             ],
