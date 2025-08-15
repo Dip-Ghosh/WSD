@@ -37,6 +37,8 @@ class RequestTimingListener extends AbstractListenerAggregate
     public function attach(EventManagerInterface $events, $priority = 1): void
     {
         $this->requestStartMicroTime = null;
+
+        $events->attach(MvcEvent::EVENT_ROUTE, [$this, 'requestStarting'], -1000);
         $events->attach(MvcEvent::EVENT_RENDER, [$this, 'requestEnding'], -1000);
     }
 
