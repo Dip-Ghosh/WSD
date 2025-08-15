@@ -1,5 +1,6 @@
 <?php
-declare(strict_types=1);
+
+declare(strict_types = 1);
 
 namespace ApplicationTest;
 
@@ -16,16 +17,22 @@ final class RequestTimingListenerTest extends TestCase
     public function testAttach(): void
     {
         $listener = new RequestTimingListener(false);
-        $events = $this->createMock(\Laminas\EventManager\EventManager::class);
-        $events->expects(static::once())->method('attach')
-            ->with(MvcEvent::EVENT_RENDER, [$listener, 'requestEnding'], -1000);
+        $events   = $this->createMock(\Laminas\EventManager\EventManager::class);
+
+        $events->expects(static::exactly(2))
+               ->method('attach')
+               ->withConsecutive(
+                   [MvcEvent::EVENT_ROUTE, [$listener, 'requestStarting'], 1000],
+                   [MvcEvent::EVENT_RENDER, [$listener, 'requestEnding'], -1000]
+               );
+
         $listener->attach($events, -9);
     }
 
 
     public function testRequestEndingNotFromSolviansAndNoStartTime(): void
     {
-        $result = new JsonModel();
+        $result   = new JsonModel();
         $mvcEvent = new MvcEvent();
         $mvcEvent->setResult($result);
 
@@ -37,7 +44,7 @@ final class RequestTimingListenerTest extends TestCase
 
     public function testRequestEndingFromSolviansAndNoStartTime(): void
     {
-        $result = new JsonModel();
+        $result   = new JsonModel();
         $mvcEvent = new MvcEvent;
         $mvcEvent->setResult($result);
 
@@ -49,7 +56,7 @@ final class RequestTimingListenerTest extends TestCase
 
     public function testRequestEndingFromSolviansAndNoStartTimeWithInitialValueExists(): void
     {
-        $result = new JsonModel(
+        $result   = new JsonModel(
             [RequestTimingListener::RESPONSE_KEY => 'initial value']
         );
         $mvcEvent = new MvcEvent;
@@ -63,7 +70,7 @@ final class RequestTimingListenerTest extends TestCase
 
     public function testRequestEndingFromSolviansWithStartTime(): void
     {
-        $result = new JsonModel();
+        $result   = new JsonModel();
         $mvcEvent = new MvcEvent;
         $mvcEvent->setResult($result);
 
